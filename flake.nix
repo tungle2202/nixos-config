@@ -10,8 +10,9 @@
   outputs = { self, nixpkgs, ... }: {
     nixosConfigurations.my-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
       modules = [
-        ./hosts/my-pc/configuration.nix
+	./hosts/my-pc/configuration.nix
 	home-manager.nixosModules.home-manager
 	{
 	  home-manager.useGlobalPkgs = true;
