@@ -44,8 +44,19 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+
+  service.desktopManager.plasma6.enable = true;
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+  	kate
+	okular
+	konsole
+	elisa
+	gwenview
+  ]
+  # services.xserver.desktopManager.gnome.enable = true;
+
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -120,6 +131,7 @@
 	wget
 	git
 	wl-clipboard
+	kitty
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
