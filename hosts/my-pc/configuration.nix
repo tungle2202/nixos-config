@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <home-manager/nixos>
     ];
 
   # Bootloader.
@@ -40,7 +41,6 @@
     LC_TELEPHONE = "vi_VN";
     LC_TIME = "vi_VN";
   };
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -86,6 +86,12 @@
     ];
   };
 
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users."tungle" = {pkgs, ... }: {
+  	home.stateVersion = "26.05";
+  };
+
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -96,9 +102,10 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  	neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  	wget
+  	neovim 
+	wget
 	git
+	wl-clipboard
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
