@@ -2,13 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [./hardware-configuration.nix] ++ [ inputs.fcitx5-lotus.nixosModules.fcitx5-lotus ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -40,6 +37,8 @@
     LC_TELEPHONE = "vi_VN";
     LC_TIME = "vi_VN";
   };
+
+  
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -96,6 +95,12 @@
     ];
   };
 
+  # fcitx5-lotus
+  services.fcitx5-lotus = {
+  	enable = true;
+	users = ["tungle"];
+  };
+
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users."tungle" = {pkgs, ... }: {
@@ -105,7 +110,7 @@
 		enable = true;
     		bashrcExtra = ''
 			parse_git_branch() {
-  				git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+  				git branch 2> /dev/null | sed -e '/^[]/d' -e 's/* \(.*\)/ (\1)/'
 			}
 			export PROMPT_COLOR='32m'
 			export DIR_COLOR='33m'
