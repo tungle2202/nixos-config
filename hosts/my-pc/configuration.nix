@@ -38,6 +38,14 @@
     LC_TIME = "vi_VN";
   };
 
+  i18n.inputMethod = {
+  	enable = true;
+	type = "fcitx5";
+	fcitx5.addons = with pkgs; [
+		inputs.fcitx5-lotus.packages.${pkgs.system}.fcitx5-lotus
+	];
+  };
+
   
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -55,7 +63,11 @@
 	gwenview
   ];
   # services.xserver.desktopManager.gnome.enable = true;
-
+  environment.variables = {
+  	GTK_IM_MODULE = "fcitx";
+	QT_IM_MODULE = "fcitx";
+	XMODIFIERS = "@im=fcitx";
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
