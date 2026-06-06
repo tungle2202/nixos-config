@@ -128,6 +128,18 @@
 		 '';
   	};
 
+	programs.neovim = {
+		enable = true;
+		defaultEditor = true;
+		
+		initLua = ''
+			vim.opt.number = true
+			vim.opt.relativenumber = true
+
+			vim.opt.timeoutlen = 500
+		'';
+	};
+
   };
 
   # Install firefox.
