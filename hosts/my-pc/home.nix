@@ -1,11 +1,31 @@
-{pkgs, ... }: 
+{pkgs, inputs, ... }: 
 
 {
-
+	imports = [
+		inputs.catppuccin.homeModules.catppuccin
+	];
 	home.username = "tungle";
 	home.homeDirectory = "/home/tungle";
-
   	home.stateVersion = "26.05";
+
+	catppuccin = {
+		enable = true;
+		flavor = "frappe";
+	};
+
+	programs.kitty = {
+		enable = true;
+		themeFile = "Catppuccin-Frappe";	
+		settings = {
+			font_family = "JetBrainsMono Nerd Font";
+			font_size = "12";
+		};
+	};
+
+	programs.plasma = {
+		enable = true;
+		workspace.lookAndFeel = "Catppuccin-Frappe";
+	};
 
 	programs.bash = {
 		enable = true;

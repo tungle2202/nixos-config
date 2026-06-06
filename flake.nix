@@ -11,9 +11,16 @@
     	url = "github:LotusInputMethod/fcitx5-lotus";
 	inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin = {
+    	url = "github:catppuccin/nix";
+    };
+    plasma-manager = {
+    	url = "github:nix-community/plasma-manager";
+	inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, plasma-manager, ... }@inputs: {
     nixosConfigurations.my-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs; };
@@ -23,7 +30,12 @@
 	{
 	  home-manager.useGlobalPkgs = true;
 	  home-manager.useUserPackages = true;
-	  home-manager.users.tungle = import ./hosts/my-pc/home.nix;
+	  home-manager.users.tungle = {
+	  	imports = [
+			./hosts/my-pc/home.nix
+			plasma-manager.homeModules.plasma-manager
+		];
+	  };
 	  home-manager.extraSpecialArgs = { inherit inputs; };
 	}
       ];
