@@ -8,8 +8,20 @@
   imports = [./hardware-configuration.nix] ++ [ inputs.fcitx5-lotus.nixosModules.fcitx5-lotus ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+  	loader = {
+		systemd-boot.enable = false;
+  		efi.canTouchEfiVariables = true;
+		
+		refind = {
+			enable = true;
+			extraConfig = ''
+				scanfor internal,hdbios,external,optical
+				also_scan_dirs +/EFI/Microsoft/Boot
+			'';
+		};
+	};
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
