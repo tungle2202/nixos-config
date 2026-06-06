@@ -17,6 +17,18 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  # fonts config
+  fonts.packages = with pkgs; [
+  	inter
+  	nerd-fonts.jetbrains-mono
+  ];
+
+  fonts.fontconfig.defaultFonts = {
+  	sansSerif = ["Inter"];
+	serif = ["Inter"];
+	monospace = ["JetBrainsMono Nerd Font"];
+  };
+
   # Enable networking
   networking.networkmanager.enable = true;
 
