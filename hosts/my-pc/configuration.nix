@@ -16,10 +16,9 @@
 		refind = {
 			enable = true;
 			extraConfig = ''
-				include themes/refind-catppuccin/frappe.conf
-
+				include EFI/refind/themes/catppuccin/frappe.conf
 				timeout 5
-				scanfor internal,hdbios,external,optical
+				scanfor internal,external,optical
 				also_scan_dirs +/EFI/Microsoft/Boot
 			'';
 		};
@@ -94,11 +93,6 @@
   	GTK_IM_MODULE = "fcitx";
 	QT_IM_MODULE = "fcitx";
 	XMODIFIERS = "@im=fcitx";
-  };
-  environment.etc = {
-  	"refind/themes" = {
-		source = ../../refind-theme;
-	};
   };
 
   # Configure keymap in X11
