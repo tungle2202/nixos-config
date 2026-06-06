@@ -23,6 +23,8 @@
 	{
 	  home-manager.useGlobalPkgs = true;
 	  home-manager.useUserPackages = true;
+	  home-manager.users.tungle = import ./hosts/my-pc/home.nix;
+	  home-manager.extraSpecialArgs = { inherit inputs; };
 	}
       ];
     };
