@@ -37,7 +37,7 @@
 			export PROMPT_COLOR='32m'
 			export DIR_COLOR='33m'
 			export GIT_COLOR='36m'
-			export PS1="\n\[\033[$PROMPT_COLOR\]\u@\h:\[\033[$DIR_COLOR\]\w\[\033[$GIT_COLOR]\]\$(parse_git_branch)\[\033[0m\]\$ " 
+			export PS1="\n\[\033[$PROMPT_COLOR\]\u@\h:\[\033[$DIR_COLOR\]\w\[\033[$GIT_COLOR\] \$(parse_git_branch)\[\033[0m\]\$ " 
 		 '';
   	};
 
