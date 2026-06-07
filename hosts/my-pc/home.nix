@@ -34,6 +34,16 @@
 			iconTheme = "Papirus-Dark";
 			cursor.theme = "Catppuccin-Frappe-Blue";
 		};
+		configFile.kwinrc = {
+			Plugins = {
+				wobblywindowsEnabled = true;
+				magiclampEnabled = true;
+				windowgeometryEnabled = true;
+			};
+			Windows = {
+				CornerRadius = 3; 
+			};
+		};
 	};
 
 	programs.bash = {

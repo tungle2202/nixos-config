@@ -138,7 +138,11 @@
     ];
   };
 
-  home-manager.useUserPackages = true;
+  home-manager = {
+  	useUserPackages = true;
+	useGlobalPkgs = true;
+	backupFileExtension = "backup";
+  };
   # Install firefox.
   programs.firefox.enable = true;
   # nix-ld for IDE
