@@ -7,6 +7,11 @@
 	home.username = "tungle";
 	home.homeDirectory = "/home/tungle";
   	home.stateVersion = "26.05";
+	home.packages = with pkgs; [
+		catppuccin-cursors.frappeBlue
+		papirus-icon-theme
+		catppuccin-kde
+	];
 
 	catppuccin = {
 		enable = true;
@@ -24,7 +29,11 @@
 
 	programs.plasma = {
 		enable = true;
-		workspace.lookAndFeel = "Catppuccin-Frappe";
+		workspace = {
+			lookAndFeel = "Catppuccin-Frappe";
+			iconTheme = "Papirus-Dark";
+			cursor.theme = "Catppuccin-Frappe-Blue";
+		};
 	};
 
 	programs.bash = {

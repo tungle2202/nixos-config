@@ -139,7 +139,7 @@
   # nix-ld for IDE
   programs.nix-ld = {
   	enable = true;
-	libaries = with pkgs; [
+	libraries = with pkgs; [
 		stdenv.cc.cc.lib
   		zlib
   		fuse3
