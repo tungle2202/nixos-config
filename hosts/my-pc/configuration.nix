@@ -6,17 +6,9 @@
 
 {
   imports = [./hardware-configuration.nix] ++ [ inputs.fcitx5-lotus.nixosModules.fcitx5-lotus ];
-
-  # Bootloader.
-  boot = {
-  	loader = {
-		systemd-boot.enable = false;
-  		efi.canTouchEfiVariables = true;
-		grub.enable = false;		
-		refind = {
-			enable = true;
-			};
-	};
+  boot.loader = {
+	systemd-boot.enable = true;
+	efi.canTouchEfiVariables = true;
   };
 
   networking.hostName = "nixos"; # Define your hostname.
