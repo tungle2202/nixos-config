@@ -74,12 +74,14 @@
 
   
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver={
+  	enable = true;
+	desktopManager.xterm.enable = false;
+  };
 
-  # Enable the GNOME Desktop Environment.
+  # Enable the kde plasme.
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
-
   services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
   	kate
@@ -93,6 +95,9 @@
   	GTK_IM_MODULE = "fcitx";
 	QT_IM_MODULE = "fcitx";
 	XMODIFIERS = "@im=fcitx";
+	# set kitty to the default terminal
+	TERMINAL = "kitty";
+	TERM = "xterm-kitty";
   };
 
   # Configure keymap in X11
