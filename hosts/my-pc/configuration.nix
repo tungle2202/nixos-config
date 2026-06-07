@@ -136,6 +136,32 @@
   home-manager.useUserPackages = true;
   # Install firefox.
   programs.firefox.enable = true;
+  # nix-ld for IDE
+  programs.nix-ld = {
+  	enable = true;
+	libaries = with pkgs; [
+		stdenv.cc.cc.lib
+  		zlib
+  		fuse3
+  		alsa-lib
+  		cups
+  		libGL
+  		libuuid
+  		xorg.libX11
+  		xorg.libXext
+  		xorg.libXrender
+  		xorg.libXrandr
+  		xorg.libxcb
+  		xorg.libXcursor
+  		xorg.libxshmfence
+  		xorg.libXxf86vm
+  		wayland
+  		libxkbcommon
+ 		glfw
+  		freetype
+  		fontconfig
+  	];
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
