@@ -150,6 +150,7 @@
 	wl-clipboard
 	kitty
 	fastfetch
+	jetbrains.idea
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
