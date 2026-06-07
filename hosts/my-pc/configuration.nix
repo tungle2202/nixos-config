@@ -15,13 +15,7 @@
 		grub.enable = false;		
 		refind = {
 			enable = true;
-			extraConfig = ''
-				include EFI/refind/themes/catppuccin/frappe.conf
-				timeout 5
-				scanfor internal,external,optical
-				also_scan_dirs +/EFI/Microsoft/Boot
-			'';
-		};
+			};
 	};
   };
 
