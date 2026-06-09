@@ -4,7 +4,10 @@
 	imports = [./hardware-configuration.nix] ++ [ inputs.fcitx5-lotus.nixosModules.fcitx5-lotus ];
 
 	boot.loader = {
-		systemd-boot.enable = true;
+		timeout = 0;
+		systemd-boot = {
+			enable = true;
+		};
 		efi.canTouchEfiVariables = true;
 	};
 
@@ -102,6 +105,7 @@
 			fastfetch
 			jetbrains.idea
 			direnv
+			unzip
 		];
 	};
 

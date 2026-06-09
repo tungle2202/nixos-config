@@ -11,11 +11,8 @@
 		packages = with pkgs; [
 			catppuccin-cursors.frappeBlue
 			papirus-icon-theme
-			catppuccin-kde
 		];
 	};
-
-
 
 	catppuccin = {
 		autoEnable = true;
