@@ -13,19 +13,12 @@
 			papirus-icon-theme
 			catppuccin-kde
 		];
-		file.".config/plasma-org.kde.plasma.desktop-appletsrc" = {
-			source = ../.././assets/plasma-org.kde.plasma.desktop-appletsrc;
- 			onChange = ''
-    				${pkgs.procps}/bin/pkill plasmashell || true
-    				${pkgs.kdePackages.plasma-workspace}/bin/plasmashell &
-  			'';
-		};
 	};
 
 
 
 	catppuccin = {
-		enable = true;
+		autoEnable = true;
 		flavor = "frappe";
 	};
 
