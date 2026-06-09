@@ -9,7 +9,6 @@
 		homeDirectory = "/home/tungle";
   		stateVersion = "26.05";
 		packages = with pkgs; [
-			catppuccin-cursors.frappeBlue
 			papirus-icon-theme
 		];
 	};
